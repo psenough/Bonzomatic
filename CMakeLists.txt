@@ -1,6 +1,6 @@
-project(Bonzomatic)
+cmake_minimum_required(VERSION 3.5)
 
-cmake_minimum_required(VERSION 3.0)
+project(Bonzomatic)
 
 set(CMAKE_OSX_ARCHITECTURES x86_64)
 

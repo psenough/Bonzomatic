@@ -30,7 +30,7 @@ DX9/DX11 versions are not recommanded if you launch several grabbing Bonzomatic 
 ### Testing on Alkama Server
 
 #### To start your own live session:
-- double-clic on Bonzomatic.exe
+- double-click on Bonzomatic.exe
 - In the dialogue, choose "Sender" as network setting
 - put "ws://drone.alkama.com:9000" as server name (it should already be there)
 - choose a room name (can be anything)
@@ -169,9 +169,9 @@ As you can see you're gonna need [CMAKE](https://cmake.org/) for this, but don't
 Use at least [Visual C++ 2010](https://support.microsoft.com/ru-ru/help/2977003/the-latest-supported-visual-c-downloads). For the DX9/DX11 builds, obviously you'll be needing a [DirectX SDK](https://www.microsoft.com/en-us/download/details.aspx?id=6812), though a lot of it is already in the Windows 8.1 SDK as well.
 You will need to install NDI SDK and install Visual Studio with components ATL and MFC
 Then:
-mkdir build && cd build
+```mkdir build && cd build
 cmake -DCMAKE_BUILD_TYPE=Release ../
-cmake --build .
+cmake --build .```
 
 ### OSX/macOS
 ```cmake``` should take care of everything:
