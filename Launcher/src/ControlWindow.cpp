@@ -57,6 +57,27 @@ void window_size_callback(GLFWwindow* window, int width, int height)
   UpdateControlWindow(0);
 }
 
+void drop_callback(GLFWwindow* window, int count, const char** paths)
+{
+  int i;
+  for (i = 0; i < count; i++) {
+    std::string path = paths[i];
+    int lastSlash = path.find_last_of("/\\");
+    int lastDot = path.find_last_of(".");
+    std::string filename = path.substr(lastSlash+1,lastDot-lastSlash-1);
+    std::string cutGrabber = filename.substr(filename.find_first_of("_")+1);
+    std::string newCoder = cutGrabber.substr(cutGrabber.find_first_of("_") + 1);
+    printf("[LAUNCHER] Drag Drop %s \n", newCoder.c_str());
+    //todo: validate the path is where this launcher is running from
+    //todo: validate this is a correct name: not null and no spaces in the name
+    AddInstance(newCoder, false);
+    FocusControlWindow();
+    RefreshDisplay();
+  }
+    //handle_dropped_file(paths[i]);
+  //UpdateControlWindow(0);
+}
+
 
 void PressMosaic() {
   StopDiaporama();
@@ -411,6 +432,7 @@ bool InitControlWindow(jsonxx::Object options) {
   glfwSetMouseButtonCallback(mWindow, mouse_button_callback);
   glfwSetScrollCallback(mWindow, scroll_callback);
   glfwSetWindowSizeCallback(mWindow, window_size_callback);
+  glfwSetDropCallback(mWindow, drop_callback);
 
   glewExperimental = GL_TRUE;
   GLenum err = glewInit();
